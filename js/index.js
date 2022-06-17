@@ -24,22 +24,22 @@ function getDatos() {
   container.innerHTML = '';
   fetch(url)
     .then(data => data.json())
-    .then(elems => elems.filter(elem => elem.casa.venta !== '0'))
-    .then(elems => elems.filter(elem => elem.casa.variacion !== undefined))
+    .then(elems => elems.filter(elem =>
+      (elem.casa.variacion !== undefined) && (elem.casa.venta !== '0')))
     .then(res => {
-      let b = 1;
+      let imgNum = 1;
       res.forEach(elem => {
         let div = `
       <div class="cotizacion-card">
         <div class="cotizacion-header">
           <div class="cotizacion-icon">
-            <img src="img\\cotizacion\\b${b}.png" alt="" />
+            <img src="img\\cotizacion\\b${imgNum}.png" alt="" />
           </div>
           <h3 class="cotizacion-titulo">${elem.casa.nombre}</h3>
         </div>
         <div class="cotizacion-body">
       `;
-        b++;
+        imgNum++;
 
         if (elem.casa.compra !== 'No Cotiza') {
           div += `<p>COMPRA: $${elem.casa.compra}</p>`;
