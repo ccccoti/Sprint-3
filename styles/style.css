@@ -119,22 +119,6 @@ nav {
   gap: 0.5rem;
 }
 
-.btn-descargar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  height: 2.5rem;
-  width: 2.5rem;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.btn-descargar img {
-  width: 2rem;
-}
-
 .btn-ingresar {
   padding: 0.5rem;
   border: none;
@@ -293,6 +277,23 @@ header {
 .cotizacion-footer {
   padding: 0.5rem;
   background-color: #333333;
+}
+
+.cotizacion-btn {
+  display: block;
+  margin-top: 1rem;
+  margin-inline: auto;
+  padding: 0.7rem 5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--textColor);
+  font-weight: 600;
+  transition: transform ease-in 150ms;
+}
+
+.cotizacion-btn:hover {
+  transform: scale(1.03);
+  transition: transform ease-in 150ms;
 }
 
 /*********/
