@@ -1,0 +1,74 @@
+/********/
+/* Form */
+/********/
+
+.flex-container {
+  margin-inline: auto;
+}
+
+.container-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-signin {
+  display: flex;
+  align-items: center;
+  margin: 5rem;
+}
+
+.form-control {
+  font-weight: bolder;
+  box-sizing: border-box;
+  height: auto;
+  font-size: 16px;
+  border: none;
+  margin: 10px;
+}
+
+.form-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.img-center {
+  grid-template-columns: 2/2;
+  grid-template-rows: 1/2;
+  align-items: center;
+}
+
+.form-signin .checkbox {
+  color: white;
+  font-weight: lighter;
+  border: none;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  margin-left: 10px;
+  font-weight: bolder;
+}
+
+.btn-secondary {
+  font-weight: lighter;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block;
+  color: white;
+}
+
+/*****************/
+/* Media Queries */
+/*****************/
+@media (max-width: 950px) {
+  section {
+    padding: 0 1.5rem;
+  }
+}

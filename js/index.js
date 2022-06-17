@@ -17,24 +17,24 @@ bars.addEventListener('click', () => {
 });
 
 // Cotizaciones
+const cotizacionBtn = document.querySelector('.cotizacion-btn');
+cotizacionBtn.addEventListener('click', () => {
+  cotizacionBtn.disabled = true;
+  getDatos();
+  setTimeout(insertUpdate, 1000);
+});
+
 const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 const cotizacionCards = document.querySelectorAll('.cotizacion-card');
 
-function insertDatos(div, texto) {
-  // Se simula la actualización de datos aunque sean iguales
-  div.textContent = '';
-  setTimeout(() => div.textContent = texto, 500);
-}
 
 function insertFlecha(flecha, variacion) {
   // Se eliminan las clases anteriores
   flecha.classList = 'cotizacion-flecha';
-  setTimeout(() => {
-    // Se checkea el signo de la variación
-    variacion[0] !== '-'
-      ? flecha.classList.add('subida')
-      : flecha.classList.add('bajada');
-  }, 500);
+  // Se checkea el signo de la variación
+  variacion[0] !== '-'
+    ? flecha.classList.add('subida')
+    : flecha.classList.add('bajada');
 }
 
 function getDatos() {
@@ -52,18 +52,42 @@ function getDatos() {
         const cotizacionFlecha = elem.querySelector('.cotizacion-flecha');
 
         if (cotizacionCompra) {
-          insertDatos(cotizacionCompra, `$${res[i].casa.compra}`);
+          cotizacionCompra.textContent = `$${res[i].casa.compra}`;
         }
         if (cotizacionVenta) {
-          insertDatos(cotizacionVenta, `$${res[i].casa.venta}`);
+          cotizacionVenta.textContent = `$${res[i].casa.venta}`;
         }
-        insertDatos(cotizacionVariacion, `${res[i].casa.variacion}%`);
+        cotizacionVariacion.textContent = `${res[i].casa.variacion}%`;
 
         insertFlecha(cotizacionFlecha, res[i].casa.variacion);
+        setTimeout(() => cotizacionBtn.disabled = false, 500);
       });
     });
 }
 getDatos();
 
-const cotizacionBtn = document.querySelector('.cotizacion-btn');
-cotizacionBtn.addEventListener('click', getDatos);
+const body = document.querySelector('body');
+// Inserta la notificación de actualización
+function insertUpdate() {
+  const div = document.createElement('div');
+
+  div.classList.add('cotizacion-actualizada');
+  div.style.bottom = '-2.5rem';
+  div.innerHTML = `
+    <p>Cotización Actualizada</p>
+  `;
+  body.append(div);
+  div.classList.add('slide-in-right');
+
+  subirDivs();
+  setTimeout(() => div.remove(), 3500);
+}
+// Cambia la posición de los divs cada vez que se agrega uno
+function subirDivs() {
+  const divs = body.querySelectorAll('.cotizacion-actualizada');
+  divs.forEach(elem => {
+    const bottom = parseFloat(elem.style.bottom);
+    console.log(bottom);
+    elem.style.bottom = `${bottom + 3}rem`;
+  });
+}
