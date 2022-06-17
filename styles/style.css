@@ -234,7 +234,14 @@ header {
 /****************/
 
 .cotizacion {
+  color: var(--textColor);
+  margin-inline: auto;
+}
+
+.cotizacion-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -244,7 +251,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   border: 2px solid #333333;
-  width: 50%;
+  width: 14.2rem;
   border-radius: 5px;
 }
 
@@ -328,38 +335,53 @@ header {
 .card-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 50px;
+  gap: 1.5rem;
 }
 
 .card {
-  width: 350px;
+  position: relative;
   display: flex;
-  background-color: #333333;
-  border: none;
   align-items: center;
+  height: 30rem;
+  width: 17rem;
+  border: none;
+  background-color: #333333;
   cursor: pointer;
 }
 
-.card-body {
-  height: 160px;
-}
-
 .card-img {
+  width: 17rem;
+  height: 17rem;
   filter: drop-shadow(5px 10px 15px #1e1e1e);
 }
 
-.card h5 {
-  color: white;
-  font-weight: bolder;
-  font-size: 2rem;
+.card-img img {
+  width: 100%;
+  height: 100%;
 }
 
-.btn-primary {
+.card-title {
   color: white;
   font-weight: bolder;
-  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.card-link {
+  position: absolute;
+  bottom: 1rem;
+  right: 50%;
+  transform: translateX(50%);
+  width: fit-content;
+  color: rgba(250, 250, 250, 0.8);
+  font-weight: bolder;
   text-decoration: none;
+}
+
+.card-link:hover {
+  color: white;
 }
 
 /*********************/
@@ -591,7 +613,6 @@ footer {
 /*****************/
 /* Media Queries */
 /*****************/
-
 @media (max-width: 984px) {
   .cargar-card {
     height: 8rem;
@@ -620,10 +641,6 @@ footer {
   }
 
   .parte-container {
-    flex-wrap: wrap;
-  }
-
-  .card-container {
     flex-wrap: wrap;
   }
 
@@ -722,6 +739,31 @@ footer {
     height: 38rem;
   }
 
+  .card {
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 15rem;
+    width: 100%;
+  }
+
+  .card-img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .card-body {
+    padding-left: 0;
+    flex: none;
+  }
+
+  .card-title {
+    max-width: 15ch;
+  }
+
+  .card-link {
+    right: 35%;
+  }
+
   .cargar-container {
     flex-direction: column;
   }
@@ -733,6 +775,12 @@ footer {
 
   .footer-section:nth-child(1) {
     margin-right: 10rem;
+  }
+}
+
+@media (max-width: 535px) {
+  .cotizacion-card {
+    width: 100%;
   }
 }
 

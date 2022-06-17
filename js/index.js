@@ -45,7 +45,6 @@ function getDatos() {
       elem.casa.variacion && elem.casa.venta != '0'))
     // Agrega lo obtenido al HTML
     .then(res => {
-      res.forEach(elem => console.log(elem.casa.nombre));
       cotizacionCards.forEach((elem, i) => {
         const cotizacionCompra = elem.querySelector('.cotizacion-compra');
         const cotizacionVenta = elem.querySelector('.cotizacion-venta');
