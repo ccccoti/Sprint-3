@@ -1,5 +1,5 @@
-const bars = document.querySelector('.bars');
 // Bars Nav
+const bars = document.querySelector('.bars');
 const navLinks = document.querySelector('.nav-links');
 const navBtns = document.querySelector('.nav-btns');
 
@@ -18,46 +18,53 @@ bars.addEventListener('click', () => {
 
 // Cotizaciones
 const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
-const container = document.querySelector('.cotizacion');
+const cotizacionCards = document.querySelectorAll('.cotizacion-card');
+
+function insertDatos(div, texto) {
+  // Se simula la actualización de datos aunque sean iguales
+  div.textContent = '';
+  setTimeout(() => div.textContent = texto, 500);
+}
+
+function insertFlecha(flecha, variacion) {
+  // Se eliminan las clases anteriores
+  flecha.classList = 'cotizacion-flecha';
+  setTimeout(() => {
+    // Se checkea el signo de la variación
+    variacion[0] !== '-'
+      ? flecha.classList.add('subida')
+      : flecha.classList.add('bajada');
+  }, 500);
+}
 
 function getDatos() {
-  container.innerHTML = '';
   fetch(url)
     .then(data => data.json())
-    .then(elems => elems.filter(elem =>
-      (elem.casa.variacion !== undefined) && (elem.casa.venta !== '0')))
+    // Filtra los resultados que no se necesitan
+    .then(res => res.filter(elem =>
+      elem.casa.variacion && elem.casa.venta != '0'))
+    // Agrega lo obtenido al HTML
     .then(res => {
-      let imgNum = 1;
-      res.forEach(elem => {
-        let div = `
-      <div class="cotizacion-card">
-        <div class="cotizacion-header">
-          <div class="cotizacion-icon">
-            <img src="img\\cotizacion\\b${imgNum}.png" alt="" />
-          </div>
-          <h3 class="cotizacion-titulo">${elem.casa.nombre}</h3>
-        </div>
-        <div class="cotizacion-body">
-      `;
-        imgNum++;
+      res.forEach(elem => console.log(elem.casa.nombre));
+      cotizacionCards.forEach((elem, i) => {
+        const cotizacionCompra = elem.querySelector('.cotizacion-compra');
+        const cotizacionVenta = elem.querySelector('.cotizacion-venta');
+        const cotizacionVariacion = elem.querySelector('.cotizacion-variacion');
+        const cotizacionFlecha = elem.querySelector('.cotizacion-flecha');
 
-        if (elem.casa.compra !== 'No Cotiza') {
-          div += `<p>COMPRA: $${elem.casa.compra}</p>`;
+        if (cotizacionCompra) {
+          insertDatos(cotizacionCompra, `$${res[i].casa.compra}`);
         }
+        if (cotizacionVenta) {
+          insertDatos(cotizacionVenta, `$${res[i].casa.venta}`);
+        }
+        insertDatos(cotizacionVariacion, `${res[i].casa.variacion}%`);
 
-        div += `
-          <P>VENTA: $${elem.casa.venta}</P>
-        </div>
-        <div class="cotizacion-footer">
-          <P>VARIACIÓN: ${elem.casa.variacion}%</P>
-        </div>
-      </div>
-      `;
-        container.innerHTML += div;
+        insertFlecha(cotizacionFlecha, res[i].casa.variacion);
       });
     });
 }
 getDatos();
 
 const cotizacionBtn = document.querySelector('.cotizacion-btn');
-cotizacionBtn.addEventListener('click', () => getDatos());
+cotizacionBtn.addEventListener('click', getDatos);

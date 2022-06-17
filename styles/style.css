@@ -13,7 +13,7 @@
 
 body {
   background-color: var(--bgColor);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 section {
@@ -77,7 +77,7 @@ nav {
 }
 
 .nav-links a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -148,13 +148,13 @@ nav {
 }
 
 .bars::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
 }
 
 .bars::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
 }
@@ -229,7 +229,9 @@ header {
   height: 100%;
 }
 
+/****************/
 /* Cotizaciones */
+/****************/
 
 .cotizacion {
   display: flex;
@@ -256,7 +258,8 @@ header {
   gap: 0.3rem;
   padding: 0.5rem;
   height: 3rem;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   background-color: #728176;
 }
 
@@ -271,12 +274,30 @@ header {
 }
 
 .cotizacion-body {
-  padding: 0.5rem 0.5rem;
+  padding: 1rem 0.5rem;
 }
 
 .cotizacion-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   padding: 0.5rem;
   background-color: #333333;
+}
+
+.cotizacion-flecha {
+  width: 10px;
+  height: 6px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.subida {
+  background-color: limegreen;
+}
+
+.bajada {
+  background-color: red;
+  transform: rotate(180deg);
 }
 
 .cotizacion-btn {
@@ -540,7 +561,7 @@ footer {
 }
 
 .footer-section li a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -3px;
