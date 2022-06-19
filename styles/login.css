@@ -1,74 +1,117 @@
 /********/
 /* Form */
 /********/
-
-.flex-container {
-  margin-inline: auto;
-}
-
-.container-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-signin {
-  display: flex;
-  align-items: center;
-  margin: 5rem;
-}
-
-.form-control {
-  font-weight: bolder;
-  box-sizing: border-box;
-  height: auto;
-  font-size: 16px;
-  border: none;
-  margin: 10px;
-}
-
-.form-signin {
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  margin: 7rem auto 0 auto;
 }
 
-.img-center {
-  grid-template-columns: 2/2;
-  grid-template-rows: 1/2;
-  align-items: center;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 20rem;
 }
 
-.form-signin .checkbox {
-  color: white;
-  font-weight: lighter;
+.input-grupo {
+  position: relative;
+  width: 100%;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 0.2rem;
+  margin: 0;
+  color: rgb(216, 216, 216);
+  cursor: text;
+  transition: all 100ms ease;
+}
+
+.form-input {
   border: none;
-  margin-left: 10px;
-  margin-top: 10px;
+  outline: none;
+  width: 100%;
+  background-color: var(--bgColor);
+  border-bottom: rgb(168, 168, 168) 1px solid;
+  color: var(--textColor);
 }
 
-.btn-primary {
-  margin-left: 10px;
-  font-weight: bolder;
+.form-input:focus {
+  border-color: var(--textColor);
 }
 
-.btn-secondary {
-  font-weight: lighter;
-  margin-left: 10px;
-  margin-top: 10px;
-  display: block;
-  color: white;
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+  transform: translate(-0.2rem, -1.3rem);
+  font-size: 0.85rem;
+  color: var(--textColor);
+  transition: all 150ms ease;
 }
 
-/*****************/
-/* Media Queries */
-/*****************/
-@media (max-width: 950px) {
-  section {
-    padding: 0 1.5rem;
-  }
+#password {
+  padding-right: 1.8rem;
+}
+
+.ojo-password {
+  position: absolute;
+  top: -0.2rem;
+  right: 0;
+  cursor: pointer;
+}
+
+.ojo-password img {
+  filter: invert(0.8);
+}
+
+.ojo-password:hover img {
+  filter: invert(1);
+}
+
+.form-input:not(:placeholder-shown) ~ .ojo-password img {
+  filter: invert(1);
+}
+
+.form-link {
+  width: fit-content;
+  color: var(--textColor);
+  font-size: 0.9rem;
+}
+
+.form-link:hover {
+  color: var(--textColor);
+}
+
+.form-btn {
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--textColor);
+  font-weight: 600;
+  transition: transform ease-in 150ms;
+}
+
+.form-btn:hover {
+  transform: scale(1.03);
+  transition: transform ease-in 150ms;
+}
+
+.form-img {
+  margin-bottom: 1rem;
+  width: 15rem;
+  z-index: -1;
+}
+
+.form-img img {
+  filter: invert(1);
+  width: 100%;
+  height: 100%;
+}
+
+/* Footer */
+footer {
+  margin-top: 0;
 }

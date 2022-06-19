@@ -1,21 +1,3 @@
-// Bars Nav
-const bars = document.querySelector('.bars');
-const navLinks = document.querySelector('.nav-links');
-const navBtns = document.querySelector('.nav-btns');
-
-bars.addEventListener('click', () => {
-  if (navLinks.classList.contains('links-active')) {
-    bars.classList.remove('bars-active');
-    navLinks.classList.remove('links-active');
-    navBtns.classList.remove('btns-active');
-    return;
-  }
-
-  bars.classList.add('bars-active');
-  navLinks.classList.add('links-active');
-  navBtns.classList.add('btns-active');
-});
-
 // Cotizaciones
 const cotizacionBtn = document.querySelector('.cotizacion-btn');
 cotizacionBtn.addEventListener('click', () => {
@@ -26,7 +8,6 @@ cotizacionBtn.addEventListener('click', () => {
 
 const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 const cotizacionCards = document.querySelectorAll('.cotizacion-card');
-
 
 function insertFlecha(flecha, variacion) {
   // Se eliminan las clases anteriores

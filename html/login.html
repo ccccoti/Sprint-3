@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITBANK</title>
-    <link rel="icon" href="./img/icons/ITBA-logo.svg" />
+    <title>ITBANK - Login</title>
+    <link rel="icon" href="../img/icons/ITBA-logo.svg" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -48,75 +48,42 @@
         </div>
       </div>
     </nav>
-    <section class="flex-container">
-      <div class="container-form">
-        <!-- Form -->
-        <div class="form-signin">
-          <form>
-            <img
-              src="../img/icon-itba-logo.png"
-              alt="20px"
-              style="margin: 10px"
-            />
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Email"
-              required
-            />
-            <input
-              type="password"
-              class="form-control"
-              placeholder="Contraseña"
-              required
-            />
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Recuérdame
-              </label>
-            </div>
-            <a href="#" class="btn btn-primary">Iniciar sesión</a>
-            <a href="#" class="btn-secondary">¿Olvidaste tu contraseña?</a>
-          </form>
+    <!-- Form -->
+    <section class="form-container">
+      <form>
+        <div class="form-img">
+          <img src="../img/icons/ITBA-logo.svg" alt="Logo ITBA" />
         </div>
-      </div>
+        <div class="input-grupo">
+          <input
+            class="form-input"
+            id="email"
+            placeholder=" "
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <label class="form-label" for="email">Email</label>
+        </div>
+        <div class="input-grupo">
+          <input
+            class="form-input"
+            id="password"
+            placeholder=" "
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <div class="ojo-password abierto">
+            <img src="../img/icons/ojo-abierto-contraseña.svg" alt="" />
+          </div>
+          <label class="form-label" for="password">Contraseña</label>
+        </div>
+        <a class="form-link" href="#">¿Olvidaste tu contraseña?</a>
+        <button class="form-btn" type="submit">Iniciar sesión</button>
+      </form>
     </section>
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-section">
-          <div class="logo">
-            <img
-              class="footer-logo"
-              src="../img/icons/ITBA-logo.svg"
-              alt="Logo ITBANK"
-            />
-          </div>
-          <div class="redes">
-            <a href=""></a>
-            <a href=""></a>
-            <a href=""></a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3>Navegación</h3>
-          <ul>
-            <li><a href="">¿Quienes Somos?</a></li>
-            <li><a href="">Compras</a></li>
-            <li><a href="">Transferencias</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Ayuda</h3>
-          <ul>
-            <li><a href="">Robo o Extravio</a></li>
-            <li><a href="">Costos</a></li>
-            <li><a href="">Preguntas Frecuentes</a></li>
-          </ul>
-        </div>
-        <div class="copyright">ITBANK 2022. Todos los derechos reservados</div>
-      </div>
-    </footer>
-    <script src="../js/index.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/login.js"></script>
   </body>
 </html>
