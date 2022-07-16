@@ -68,7 +68,6 @@ function subirDivs() {
   const divs = body.querySelectorAll('.cotizacion-actualizada');
   divs.forEach(elem => {
     const bottom = parseFloat(elem.style.bottom);
-    console.log(bottom);
     elem.style.bottom = `${bottom + 3}rem`;
   });
 }
